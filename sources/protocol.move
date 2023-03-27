@@ -23,6 +23,11 @@ module payment::protocol {
         item: Option<T>,        // `T` is the type of the item
     }
 
+    struct LockedItems has key, store {
+        id: UID,
+        locked_objects: vector<ID>,        
+    }
+
     struct Reciept has key, store {
         id: UID,
         buyer: address,
@@ -38,11 +43,6 @@ module payment::protocol {
         seller: address,
         itemID: ID,
         failed_reason: vector<u8>,
-    }
-
-    struct LockedItems has key, store {
-        id: UID,
-        locked_objects: vector<ID>,        
     }
 
     fun get_current_timestamp(): u64 {      // This should be implement in Sui
@@ -144,5 +144,8 @@ module payment::protocol {
         };
         transfer::transfer(receipt, buyer);
     }
+
+    // 3.1 Buyer cancel the bill...
+    // ...
 
 }
