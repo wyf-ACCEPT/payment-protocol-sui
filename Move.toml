@@ -1,9 +1,10 @@
 [package]
-name = "payment-protocol-sui"
+name = "payment"
 version = "0.0.1"
 
 [dependencies]
-Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "devnet" }
+# Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework", rev = "devnet" }
+Sui = { local = "../Sui/crates/sui-framework" }
 
 [addresses]
 payment =  "0x0"
